@@ -1,12 +1,28 @@
 package com.example.secondhomeworkerhancavdar.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+
+/*
+Automatically maps incoming @RequestBody object to corresponding sub-types.
+Need to specify "type" attribute in JSON, doesnt seem to be the best practice,
+but works for now  :)
+ */
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = PermanentInstructor.class, name = "PermanentInstructor"),
+        @JsonSubTypes.Type(value = VisitingResearcher.class, name = "VisitingResearcher")
+})
 public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

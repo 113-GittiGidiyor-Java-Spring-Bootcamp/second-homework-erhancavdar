@@ -31,7 +31,7 @@ public class StudentController {
         if (student == null) {
             return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok(new ResponseMessage(studentService.save(student) + "\n Successfully saved."));
+        return ResponseEntity.ok(new ResponseMessage(studentService.save(student) + " Successfully saved."));
     }
 
     @PutMapping
@@ -40,7 +40,7 @@ public class StudentController {
             return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
         }
         studentService.update(student);
-        return ResponseEntity.ok(new ResponseMessage(student + "\n Successfully updated."));
+        return ResponseEntity.ok(new ResponseMessage(student + " Successfully updated."));
     }
 
     @DeleteMapping("/{id}")

@@ -30,7 +30,7 @@ public class CourseController {
         if (course == null) {
             return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok(new ResponseMessage(courseService.save(course) + "\n Successfully saved."));
+        return ResponseEntity.ok(new ResponseMessage(courseService.save(course) + " Successfully saved."));
     }
 
     @PutMapping
@@ -39,7 +39,7 @@ public class CourseController {
             return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
         }
         courseService.update(course);
-        return ResponseEntity.ok(new ResponseMessage(course + "\n Successfully updated."));
+        return ResponseEntity.ok(new ResponseMessage(course + " Successfully updated."));
     }
 
     @DeleteMapping("/{id}")

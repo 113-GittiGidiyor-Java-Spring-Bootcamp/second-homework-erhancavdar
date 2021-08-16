@@ -25,12 +25,14 @@ public class InstructorController {
         return ResponseEntity.ok(instructorService.findAll());
     }
 
+    // @RequestBody inheritance is handled in Instructor.class
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Instructor instructor) {
+        System.out.println(instructor);
         if (instructor == null) {
             return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
         }
-        return ResponseEntity.ok(new ResponseMessage(instructorService.save(instructor) + "\n Successfully saved."));
+        return ResponseEntity.ok(new ResponseMessage(instructorService.save(instructor) + " Successfully saved."));
     }
 
     @PutMapping
@@ -39,7 +41,7 @@ public class InstructorController {
             return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
         }
         instructorService.update(instructor);
-        return ResponseEntity.ok(new ResponseMessage(instructor + "\n Successfully updated."));
+        return ResponseEntity.ok(new ResponseMessage(instructor + " Successfully updated."));
     }
 
     @DeleteMapping("/{id}")

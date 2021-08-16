@@ -25,7 +25,7 @@ public class VisitingResearcher extends Instructor {
 
     @Override
     public String toString() {
-        return "VisitingResearcher{" +
+        return "VisitingResearcherDTO{" +
                 "hourlySalary=" + hourlySalary +
                 '}';
     }
