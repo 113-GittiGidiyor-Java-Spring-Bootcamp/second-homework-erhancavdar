@@ -9,5 +9,5 @@ public interface CRUDRepository <T>{
     T findById(long id);
     T save(T t);
     void delete(long id);
-    void update (T t, long id);
+    void update (T t);
 }
