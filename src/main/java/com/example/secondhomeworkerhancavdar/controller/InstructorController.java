@@ -25,7 +25,11 @@ public class InstructorController {
         return ResponseEntity.ok(instructorService.findAll());
     }
 
-    // @RequestBody inheritance is handled in Instructor.class
+    /**
+     * Need to specify "type" attribute while forming the JSON body.
+     * It has two types as expected(can be changed ofc, see Instructor.class) PermanentInstructor
+     * and VisitingResearcher. Not sure if this is the best approach.
+     */
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Instructor instructor) {
         System.out.println(instructor);
