@@ -1,13 +1,14 @@
-package com.example.secondhomeworkerhancavdar.repositories;
+package com.example.secondhomeworkerhancavdar.repositories.concrete;
 
-import com.example.secondhomeworkerhancavdar.entity.Instructor;
 import com.example.secondhomeworkerhancavdar.entity.Student;
+import com.example.secondhomeworkerhancavdar.repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
-
-public class StudentRepositoryImpl implements StudentRepository{
+@Repository
+public class StudentRepositoryImpl implements StudentRepository {
     EntityManager entityManager;
 
     @Autowired
