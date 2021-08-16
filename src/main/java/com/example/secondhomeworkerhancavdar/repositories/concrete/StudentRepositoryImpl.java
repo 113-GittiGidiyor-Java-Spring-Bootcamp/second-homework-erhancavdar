@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+
 @Repository
 public class StudentRepositoryImpl implements StudentRepository {
     EntityManager entityManager;
@@ -15,6 +16,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     public StudentRepositoryImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     @Override
     public List<Student> findAll() {
         return entityManager.createQuery("FROM Student", Student.class).getResultList();

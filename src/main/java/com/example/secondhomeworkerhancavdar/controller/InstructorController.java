@@ -2,7 +2,6 @@ package com.example.secondhomeworkerhancavdar.controller;
 
 import com.example.secondhomeworkerhancavdar.entity.Instructor;
 import com.example.secondhomeworkerhancavdar.entity.ResponseMessage;
-import com.example.secondhomeworkerhancavdar.entity.Student;
 import com.example.secondhomeworkerhancavdar.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import java.util.List;
 @RequestMapping("api/instructors")
 public class InstructorController {
     InstructorService instructorService;
+
     @Autowired
     public InstructorController(InstructorService instructorService) {
         this.instructorService = instructorService;

@@ -19,7 +19,7 @@ public class Course {
     @NotFound(action = NotFoundAction.IGNORE) //pfffs
     private Instructor instructor;
     @ManyToMany
-    private Set<Student> students = new HashSet<>();
+    private final Set<Student> students = new HashSet<>();
 
     public Course() {
     }
