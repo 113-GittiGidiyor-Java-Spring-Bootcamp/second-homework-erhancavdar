@@ -21,11 +21,12 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    // Get all the students
     @GetMapping
     public ResponseEntity<List<Student>> findAll() {
         return ResponseEntity.ok(studentService.findAll());
     }
-
+    // Save
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Student student) {
         if (student == null) {
@@ -33,7 +34,7 @@ public class StudentController {
         }
         return ResponseEntity.ok(new ResponseMessage(studentService.save(student) + " Successfully saved."));
     }
-
+    // Update
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Student student) {
         if (student == null) {
@@ -42,7 +43,7 @@ public class StudentController {
         studentService.update(student);
         return ResponseEntity.ok(new ResponseMessage(student + " Successfully updated."));
     }
-
+    // Delete
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
         if (studentService.findById(id) == null) {
@@ -51,7 +52,7 @@ public class StudentController {
         studentService.delete(id);
         return ResponseEntity.ok(new ResponseMessage("Successfully deleted."));
     }
-
+    // Find by id
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
         if (studentService.findById(id) == null) {

@@ -19,12 +19,13 @@ public class CourseController {
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
-
+    // Find all courses
     @GetMapping
     public ResponseEntity<List<Course>> findAll() {
         return ResponseEntity.ok(courseService.findAll());
     }
 
+    // Save
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Course course) {
         if (course == null) {
@@ -32,7 +33,7 @@ public class CourseController {
         }
         return ResponseEntity.ok(new ResponseMessage(courseService.save(course) + " Successfully saved."));
     }
-
+    // Update
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Course course) {
         if (course == null) {
@@ -41,7 +42,7 @@ public class CourseController {
         courseService.update(course);
         return ResponseEntity.ok(new ResponseMessage(course + " Successfully updated."));
     }
-
+    // Delete
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
         if (courseService.findById(id) == null) {
@@ -50,7 +51,7 @@ public class CourseController {
         courseService.delete(id);
         return ResponseEntity.ok(new ResponseMessage("Successfully deleted."));
     }
-
+    // Find by id
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
         if (courseService.findById(id) == null) {

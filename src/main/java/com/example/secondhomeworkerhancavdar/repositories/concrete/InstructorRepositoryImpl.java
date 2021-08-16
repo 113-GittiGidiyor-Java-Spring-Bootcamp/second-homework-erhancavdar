@@ -1,6 +1,7 @@
 package com.example.secondhomeworkerhancavdar.repositories.concrete;
 
 import com.example.secondhomeworkerhancavdar.entity.Instructor;
+import com.example.secondhomeworkerhancavdar.entity.VisitingResearcher;
 import com.example.secondhomeworkerhancavdar.repositories.InstructorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -41,4 +42,5 @@ public class InstructorRepositoryImpl implements InstructorRepository {
     public void update(Instructor instructor) {
         entityManager.merge(instructor);
     }
+
 }
