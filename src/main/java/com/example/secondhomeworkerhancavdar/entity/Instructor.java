@@ -1,5 +1,7 @@
 package com.example.secondhomeworkerhancavdar.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,6 +14,7 @@ public class Instructor {
     private String name;
     private String phoneNumber;
     @OneToMany(mappedBy = "instructor")
+    @JsonManagedReference //To prevent stackoverflow
     private List<Course> courses;
 
     public Instructor() {

@@ -1,5 +1,6 @@
 package com.example.secondhomeworkerhancavdar.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
@@ -16,6 +17,7 @@ public class Course {
     private String courseCode;
     private float creditScore;
     @ManyToOne
+    @JsonBackReference // To prevent stackoverflow
     @NotFound(action = NotFoundAction.IGNORE) //pfffs
     private Instructor instructor;
     @ManyToMany
