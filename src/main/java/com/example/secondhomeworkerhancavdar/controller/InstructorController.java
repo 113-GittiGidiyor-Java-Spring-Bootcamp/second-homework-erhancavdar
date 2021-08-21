@@ -1,9 +1,7 @@
 package com.example.secondhomeworkerhancavdar.controller;
 
 import com.example.secondhomeworkerhancavdar.entity.Instructor;
-import com.example.secondhomeworkerhancavdar.entity.PermanentInstructor;
 import com.example.secondhomeworkerhancavdar.entity.ResponseMessage;
-import com.example.secondhomeworkerhancavdar.entity.VisitingResearcher;
 import com.example.secondhomeworkerhancavdar.service.InstructorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,23 +33,20 @@ public class InstructorController {
      */
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Instructor instructor) {
-        System.out.println(instructor);
-        if (instructor == null) {
-            return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
-        }
+
         return ResponseEntity.ok(new ResponseMessage(instructorService.save(instructor) + " Successfully saved."));
     }
+
     // Update
     @PutMapping()
     public ResponseEntity<?> update(@RequestBody Instructor instructor) {
-        if(instructor == null){
-            return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
-        }
+
         instructorService.update(instructor);
         return new ResponseEntity<>(new ResponseMessage("Successfully updated."), HttpStatus.OK);
 
 
     }
+
     // Delete by id
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
@@ -61,6 +56,7 @@ public class InstructorController {
         instructorService.delete(id);
         return ResponseEntity.ok(new ResponseMessage("Successfully deleted."));
     }
+
     // Find by id
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {

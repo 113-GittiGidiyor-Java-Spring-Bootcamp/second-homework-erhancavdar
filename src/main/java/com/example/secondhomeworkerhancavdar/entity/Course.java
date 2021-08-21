@@ -10,6 +10,8 @@ import java.util.Set;
 
 @Entity
 public class Course {
+    @ManyToMany
+    private final Set<Student> students = new HashSet<>();
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -20,8 +22,6 @@ public class Course {
     @JsonBackReference // To prevent stackoverflow
     @NotFound(action = NotFoundAction.IGNORE) //pfffs
     private Instructor instructor;
-    @ManyToMany
-    private final Set<Student> students = new HashSet<>();
 
     public Course() {
     }

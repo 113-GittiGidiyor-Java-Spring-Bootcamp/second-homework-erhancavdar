@@ -26,23 +26,22 @@ public class StudentController {
     public ResponseEntity<List<Student>> findAll() {
         return ResponseEntity.ok(studentService.findAll());
     }
+
     // Save
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Student student) {
-        if (student == null) {
-            return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
-        }
+
         return ResponseEntity.ok(new ResponseMessage(studentService.save(student) + " Successfully saved."));
     }
+
     // Update
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Student student) {
-        if (student == null) {
-            return new ResponseEntity<>(new ResponseMessage("Null input."), HttpStatus.BAD_REQUEST);
-        }
+
         studentService.update(student);
         return ResponseEntity.ok(new ResponseMessage(student + " Successfully updated."));
     }
+
     // Delete
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
@@ -52,6 +51,7 @@ public class StudentController {
         studentService.delete(id);
         return ResponseEntity.ok(new ResponseMessage("Successfully deleted."));
     }
+
     // Find by id
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable long id) {
