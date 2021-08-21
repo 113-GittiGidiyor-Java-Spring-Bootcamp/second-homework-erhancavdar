@@ -1,5 +1,6 @@
 package com.example.secondhomeworkerhancavdar.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -30,7 +31,8 @@ public class Instructor {
     private String name;
     private String phoneNumber;
     @OneToMany(mappedBy = "instructor")
-    @JsonManagedReference //To prevent stackoverflow
+    //@JsonManagedReference //To prevent stackoverflow
+    @JsonIgnore
     private List<Course> courses;
 
     public Instructor() {

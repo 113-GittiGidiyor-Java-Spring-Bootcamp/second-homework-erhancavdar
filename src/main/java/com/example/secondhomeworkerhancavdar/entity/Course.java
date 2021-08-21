@@ -19,7 +19,7 @@ public class Course {
     private String courseCode;
     private float creditScore;
     @ManyToOne
-    @JsonBackReference // To prevent stackoverflow
+    //@JsonBackReference // To prevent stackoverflow
     @NotFound(action = NotFoundAction.IGNORE) //pfffs
     private Instructor instructor;
 
