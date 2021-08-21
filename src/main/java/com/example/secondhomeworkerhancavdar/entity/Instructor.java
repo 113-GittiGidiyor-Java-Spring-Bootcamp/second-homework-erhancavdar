@@ -16,13 +16,10 @@ Automatically maps incoming @RequestBody object to corresponding sub-types.
 Need to specify "type" attribute in JSON, doesnt seem to be the best practice,
 but works for now  :)
  */
-@JsonTypeInfo(
-        use = JsonTypeInfo.Id.NAME,
-        include = JsonTypeInfo.As.PROPERTY,
-        property = "type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.DEDUCTION, defaultImpl = Instructor.class)
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = PermanentInstructor.class, name = "PermanentInstructor"),
-        @JsonSubTypes.Type(value = VisitingResearcher.class, name = "VisitingResearcher")
+        @JsonSubTypes.Type(value = PermanentInstructor.class),
+        @JsonSubTypes.Type(value = VisitingResearcher.class)
 })
 public class Instructor {
     @Id
